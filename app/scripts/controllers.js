@@ -2,27 +2,69 @@
 {
     'use strict';
 
-    angular.module('GalleryApp.controllers', ['GalleryApp.services']);
+    angular.module('PizzaPlanetApp.controllers', []);
 
-    function HomeController($scope, Photos)
+    function MainController ($scope)
     {
-        Photos.success(function(data)
-        {
-            $scope.photos = data;
-        });
-    }
+        $scope.today = new Date();
 
-    function PhotoController($scope, Photos, $routeParams)
-    {
-        Photos.success(function(data)
-        {
-            $scope.detail = data[$routeParams.id];
-        });
+        $scope.appetizers = [
+            {
+                name: 'Caprese',
+                description: 'Mozzarella, tomatoes, basil, balsmaic glaze.',
+                price: 4.95
+            },
+            {
+                name: 'Mozzarella Sticks',
+                description: 'Served with marinara sauce.',
+                price: 3.95
+            },
+            {
+                name: 'Bruschetta',
+                description: 'Grilled bread garlic, tomatoes, olive oil',
+                price: 4.95
+            }
+        ];
+
+        $scope.mains = [
+            {
+                name: 'Caprese',
+                description: 'Mozzarella, tomatoes, basil, balsmaic glaze.',
+                price: 4.95
+            },
+            {
+                name: 'Mozzarella Sticks',
+                description: 'Served with marinara sauce.',
+                price: 3.95
+            },
+            {
+                name: 'Bruschetta',
+                description: 'Grilled bread garlic, tomatoes, olive oil',
+                price: 4.95
+            }
+        ];
+
+        $scope.extras = [
+            {
+                name: 'Caprese',
+                description: 'Mozzarella, tomatoes, basil, balsmaic glaze.',
+                price: 4.95
+            },
+            {
+                name: 'Mozzarella Sticks',
+                description: 'Served with marinara sauce.',
+                price: 3.95
+            },
+            {
+                name: 'Bruschetta',
+                description: 'Grilled bread garlic, tomatoes, olive oil',
+                price: 4.95
+            }
+        ];
     }
 
     angular
-        .module('GalleryApp.controllers')
-        .controller('HomeController', HomeController)
-        .controller('PhotoController', PhotoController);
+        .module('PizzaPlanetApp.controllers')
+        .controller('MainController', MainController);
 
 })();

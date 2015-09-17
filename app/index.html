@@ -3,37 +3,82 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
-        <title>Catálogo basado en AngularJS</title>
+        <title>Pizza Planet AngularJS</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300' rel='stylesheet' type='text/css'>
         <!-- build:css css/style.min.css -->
         <!-- bower:css -->
         <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
         <!-- endbower -->
         <!-- inject:css -->
-
         <link rel="stylesheet" href="/stylesheets/main.css">
-
         <!-- endinject -->
         <!-- endbuild -->
     </head>
-    <body ng-app="GalleryApp">
+    <body ng-app='PizzaPlanetApp'>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <!-- Add your site or application content here -->
         <div class="header">
+            <h1><span>Pizza</span><span>Planet</span></h1>
+        </div>
+
+        <div class="main" ng-controller="MainController">
             <div class="container">
-                <a href="/#/">
-                    <img src="img/logo.svg" width="80" height="80"> &#12501; &#65387; &#12488; &#12501; &#65387; &#12488;
-                </a>
+                <h1>Specials for {{ today | date }}</h1>
+
+                <h2>Appetizers</h2>
+                <div class="appetizers row" ng-repeat="appetizer in appetizers">
+                    <div class="item col-md-9">
+                        <h3 class="name">{{ appetizer.name }}</h3>
+                        <p class="description">
+                            {{ appetizer.description }}
+                        </p>
+                    </div>
+                    <div class="price col-md-3">
+                        <p class="price">
+                            {{ appetizer.price  | currency }}
+                        </p>
+                    </div>
+                </div>
+
+                <h2>Mains</h2>
+                <div class="mains row" ng-repeat="main in mains">
+                    <div class="item col-md-9">
+                        <h3 class="name">{{ main.name }}</h3>
+                        <p class="description">
+                            {{ main.description }}
+                        </p>
+                    </div>
+                    <div class="price col-md-3">
+                        <p class="price">
+                            {{ main.price  | currency }}
+                        </p>
+                    </div>
+                </div>
+
+                <h2>Extras</h2>
+                <div class="extras row" ng-repeat="extra in extras">
+                    <div class="item col-md-9">
+                        <h3 class="name">{{ extra.name }}</h3>
+                        <p class="description">
+                            {{ extra.description }}
+                        </p>
+                    </div>
+                    <div class="price col-md-3">
+                        <p class="price">
+                            {{ extra.price  | currency }}
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <div ng-view></div>
+        <div class="footer">
+        </div>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -49,16 +94,11 @@
         <!-- bower:js -->
         <script src="lib/jquery/dist/jquery.js"></script>
         <script src="lib/angular/angular.js"></script>
-        <script src="lib/angular-route/angular-route.js"></script>
         <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:js js/app.min.js -->
         <!-- inject:js -->
-
-        <script src="/scripts/templates.js"></script>
-
-        <script src="/scripts/services.js"></script>
 
         <script src="/scripts/controllers.js"></script>
 
